@@ -197,8 +197,65 @@ $$
 X^Ty = X^TX\beta 
 $$
 
+\textbf{If you found that explanation a bit too unwieldy, below shown is an alternate proof that uses matrix algebra and matrix calculus.}
 
+We are given that the residuals are given by $e = Y - X \beta$, and that the sum of squared residuals is given by ${e^Te}$.
 
+The $(k+1)$ parameters in $\beta$ are to be estimated by minimizing the sum of squared residuals (represented below by $s$), which involves taking its first derivative and setting it to zero.
+
+Therefore,
+
+$$
+s = e^Te 
+$$
+
+$$
+s = (Y-X\beta)^T(Y-X\beta)
+$$
+
+By the rules of matrix algebra, we can now write:
+
+$$
+s = (Y^T - X^T\beta^T) (Y-X\beta)
+$$
+
+Multiplication is distributive: 
+
+$$
+s = Y^TY - Y^TX\beta - X^T\beta^TY + X^T\beta^TX\beta
+$$
+
+From the above expression, we can see that the second and third terms are transposes of each other. That is,
+
+$$
+Y^TX\beta = (X^T\beta^TY)^T
+$$
+
+In this particular equation, it can also be inferred that $Y^TX\beta$ and $X^T\beta^TY$ are both scalars. Therefore, the equation for $s$ can be further simplified as:
+
+$$
+s = Y^TY - 2\beta^TX^TY + X^T\beta^TX\beta
+$$
+
+Upon calculating the derivative of this equation and setting it to 0:
+
+$$
+\frac{\partial s}{\partial \beta^*} = 0 - 2X^TY + 2X^TX\beta^*
+$$
+
+$$
+- 2X^TY + 2X^TX\beta^* = 0
+$$
+
+$$ 
+2X^TY = 2X^TX\beta^* 
+$$
+
+Therefore, now we can finally prove:
+
+$$
+X^TY = X^TX\beta^*
+$$
 
 ### Sub-Problem 4
 
@@ -244,6 +301,21 @@ To find the vector $\beta^*$ (which minimizes  $s$ ), we solve the above equatio
    $$
    \beta^* = (X^TX)^{-1}X^TY
    $$
+
+\textbf{Matrix Algebra - based proof}
+
+From sub-problem 3, we were able to prove that:
+
+$$
+X^TY = X^TX\beta^*
+$$
+
+To find the vector $\beta^*$ (which minimizes  $s$ ), we solve the above equation. Assuming that $X^TX$ is invertible, we multiply both sides by $(X^TX)^{-1}$:
+   
+$$
+\beta^* = (X^TX)^{-1}X^TY
+$$
+
 
 ## Problem 2
 
